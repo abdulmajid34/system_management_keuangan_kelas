@@ -17,10 +17,14 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    protected $table = 'users';
+
     protected $fillable = [
-        'name',
-        'email',
+        'username',
+        'role',
         'password',
+        'status'
     ];
 
     /**
@@ -44,5 +48,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function siswa()
+    {
+        return $this->hasOne('App\Models\Siswa');
     }
 }
